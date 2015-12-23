@@ -1,61 +1,318 @@
-\documentclass[11pt,fleqn]{article}
-\usepackage{a4wide}
-\usepackage{fixltx2e}
-\usepackage[utf8]{inputenc}
-\usepackage[swedish,english]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage{sidecap}
-\usepackage{fancyhdr}
-\usepackage{amssymb,mathtools}
-\usepackage[margin=1.5in]{geometry}
-\usepackage{abstract}
-\usepackage[parfill]{parskip}
-\usepackage{tocloft}
-\usepackage{adjustbox}
-\usepackage{textcomp}
-\usepackage{listings}
-\usepackage{xcolor,colortbl}
-\usepackage{hyperref}
+\documentclass[a4paper,10pt]{article}
 
+%A Few Useful Packages
+\usepackage{marvosym}
+\usepackage{fontspec} 					%for loading fonts
+\usepackage{xunicode,xltxtra,url,parskip} 	%other packages for formatting
+\RequirePackage{color,graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[big]{layaureo} 				%better formatting of the A4 page
+% an alternative to Layaureo can be ** \usepackage{fullpage} **
+\usepackage{supertabular} 				%for Grades
+\usepackage{titlesec}					%custom \section
+
+%Setup hyperref package, and colours for links
+\usepackage{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour, linkcolor=linkcolour}
+
+%FONTS
+\defaultfontfeatures{Mapping=tex-text}
+%\setmainfont[SmallCapsFont = Fontin SmallCaps]{Fontin}
+%%% modified for Karol Kozioł for ShareLaTeX use
+\setmainfont[
+SmallCapsFont = Fontin-SmallCaps.otf,
+BoldFont = Fontin-Bold.otf,
+ItalicFont = Fontin-Italic.otf
+]
+{Fontin.otf}
+%%%
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{3pt}{3pt}
+%Tweak a bit the top margin
+%\addtolength{\voffset}{-1.3cm}
+
+%Italian hyphenation for the word: ''corporations''
+\hyphenation{im-pre-se}
+
+%-------------WATERMARK TEST [**not part of a CV**]---------------
+\usepackage[absolute]{textpos}
+
+\setlength{\TPHorizModule}{30mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+\textblockorigin{2mm}{0.65\paperheight}
+\setlength{\parindent}{0pt}
+
+%--------------------BEGIN DOCUMENT----------------------
 \begin{document}
 
-\section*{RESUMÉ}
+%WATERMARK TEST [**not part of a CV**]---------------
+%\font\wm=''Baskerville:color=787878'' at 8pt
+%\font\wmweb=''Baskerville:color=FF1493'' at 8pt
+%{\wm 
+%	\begin{textblock}{1}(0,0)
+%		\rotatebox{-90}{\parbox{500mm}{
+%			Typeset by Alessandro Plasmati with \XeTeX\  \today\ for 
+%			{\wmweb \href{http://www.aleplasmati.comuv.com}{aleplasmati.comuv.com}}
+%		}
+%	}
+%	\end{textblock}
+%}
 
-\raggedleft
-Alexander Poole \\
-Björnkärrsgatan 5a \\
-584 36 Linköping, Sverige \\
-+46 20 482 59 57, alex.o.poole@gmail.com \\
-\raggedright
+\pagestyle{empty} % non-numbered pages
 
-% ----------------------------------------------------
+\font\fb=''[cmr10]'' %for use with \LaTeX command
 
-\subsection*{PROFILE}
-Jag är en social student som ska börja på en master inom signal och bildbehandling till hösten då jag läst klart min kandidat. Jag letar ett sommarjobb med inriktning mot programmering, problemlösning och felsökning. Inom områden där teknisk kompetens i matematik och elektronik behövs. Jag har även goda kunskaper inom det mesta som har med tryck att göra.% ----------------------------------------------------
+%--------------------TITLE-------------
+\par{\centering{\Huge Alexander \textsc{Poole}} \\ Master student, Teknisk fysik och elektroteknik
+    \bigskip\par}
 
-\subsection*{EXPERIENCE}
-\paragraph*{Elektronik montör} \textit{Diatron, Linköping 2012/06-2012/08} ~\\
-Sommarjobb där jag byggde samman och kalibrera industri skrivare. Även grundläggande lödning försekom.
-% ----------------------------------------------------
+%--------------------SECTIONS-----------------------------------
+%Section: Personal Data
+\section{Personuppgifter}
 
-\paragraph*{Elektronik montör} \textit{Licera, Linköping 2012/11-2013/01} \\
-Extrajobb där jag byggde samman och kalibrerade gsm datorer för bettalning hos taxibilar.
-% ----------------------------------------------------
+\begin{tabular}{rl}
+    \textsc{Address:}   & Björnkärrsgatan, Linköping \\
+    \textsc{Telefon:}     & +46 708 5957\\
+    \textsc{email:}     & \href{mailto:alex.o.poole@gmail.com}{alex.o.poole@gmail.com}
+\end{tabular}
 
-\paragraph*{Entrevärd} \textit{Kårrservice, Linköping 2014/10- tillsvidare} \\
-Jobbar tillsammans med ordningsvakter på flera av linköpoings studentklubbar. Man lär dig bemöta och hantera en stor del olika människor.
-% ----------------------------------------------------
+%Section: Education
+\section{Utbildning}
+\begin{tabular}{r|p{11cm}}	
 
 
-\subsection*{EDUCATION}
-\paragraph*{Civilingenjör: Tekniskfysik och elektroteknik} \textit{Linköping university, Linköping 2011/08 - tills vidare}
-Kommer att ha läst klar min kandidat tills sommaren och påbörjar då min master med inriktning mot signal och bildbehandling. Kandidaten ger en bred teoretisk grund inom matematik fysik och elektronik, medans mastern syftar att fördjupa min kunskap inom signal teori, bildbehandling och då även programmering. 
-% ----------------------------------------------------
+ \emph{Påbörjad} & Teknisk fysik och elektroteknik, \textbf{Linköpings Univeritet}\\
+\textsc{Augusti} 20011 &  Master: Signal och bild, Signal och information\\
+& \footnotesize{Civilingenjörs utbildning inom teknisk fysik och elektroteknik har givit mig väldigt bra tekniskt kunnande och djup teoretisk kunskap inom många områden. Förnuvarande så läser jag kurser inom två master inriktningar för att få så bra tekniskt kunnande inom signalbehandling.}\\
+&\normalsize \textsc{Snitt}: 3.6\hyperlink{grds_cleli}{\hfill| \footnotesize Detaljerad lista av kurser}
+\\\multicolumn{2}{c}{} \\
 
-\subsection*{Kunskaper}
-\paragraph*{Programmering} \textit{Licera, Linköping 2012/11-2013/01} \\
-Extrajobb där jag byggde samman och kalibrerade gsm datorer för bettalning hos taxibilar.
+\emph{Avslutad} & Naturvetenskapsprogrammet, \textbf{Sundsgymnasiet, Vellinge}\\
+\textsc{Juni} 20011 & \normalsize \textsc{Snitt}: 18.7 \hyperlink{grds_cleli}{\hfill| \footnotesize Detaljerad lista av kurser}
+\\
 
+\end{tabular}
+
+%Section: Work Experience at the top
+\section{Arbets erfarenhet}
+\begin{tabular}{r|p{11cm}}
+
+    \emph{Nuvarande} &  Lektionshandledare, \textsc{ISY} Linköpings Universitet\\
+    \textsc{Sep 2015} & \emph{Pedagogik, elektronik, ledarskap}\\
+    &\footnotesize{Som lektionsledare inom elektronik för Y- och D-programmet har jag blivit en bättre pedagog, ledare och jag har fördjupat mina kunskaper inom elektronik. }\\\multicolumn{2}{c}{} \\
+
+    \emph{Nuvarande} & Entrevärd, Kårservice Linköping \\         \textsc{Okt 2014} & \emph{Kommunikation, konflikthantering}\\
+    & \footnotesize{Som Entrevärd inom kårservice jobbar man nära inpå ordningsvakter och hamnar ständigt i konflikter med berusade människor. En stor del av jobbet går ut på att lösa dessa konflikter och det krävs därför goda kommunikativa egenskaper.}\\\multicolumn{2}{c}{} \\
+
+    & Gruppchef, \textsc{FKP} Scorpio \\         
+    \textsc{Sommar 2015} & \emph{Ledarskap, Kommunikation, konflikthantering}\\
+    & \footnotesize{På Bråvalla (festival, Norrköping) och Getaway rock (festival, Gävle) jobbade jag som alkoholkontrollant gruppchef. Det innebar att jag ledde en grupp av alkoholkontrollanter på 2-6 personer, dessa personer var inte vana vid jobbet och behövdes ständigt motiveras för att de skulle genomföra sitt jobb.}\\\multicolumn{2}{c}{} \\
+    
+    & Språkreseledare, England \\         
+    \textsc{Sommar 2014} & \emph{Ledarskap, Engelska, Italienska }\\
+    & \footnotesize{Språkreseledare för Italienska ungdomar, till största del gick det ut på att sysselsätta och kommunicera med ungdomar med bristfällig engelska.}\\\multicolumn{2}{c}{} \\
+    
+    & Elektronik montör, Licera Mjärdevi \\         
+    \textsc{Nov-Feb 2012-2013} & \emph{Elektronik}\\
+    & \footnotesize{Jobbade med montering och programmering av gsm datorer, gav mig inblick i hur det är att jobba med produktion i industri.}\\\multicolumn{2}{c}{} \\
+    
+    & Elektronik montör, Diatron Svedala \\         
+    \textsc{Sommar 2012} & \emph{Elektronik}\\
+    & \footnotesize{Att jobba som elektronik montör gav mig inblick i hur det är att jobba med produktion i industrin.}\\
+    
+    
+\end{tabular}
+
+%Section: Andra erfarenheter
+\section{Studiesociala åtaganden}
+\begin{tabular}{r|p{11cm}}
+
+    \emph{Nuvarande} &  Fullmäktigeledamot, LinTek, Linköpings Universitet\\
+    \textsc{Maj 2014} & \emph{Organisatorisk styrning}\\
+    &\footnotesize{Som fullmäktige ledamot har jag fått insikt i hur man kan styra en organisation och leda den framåt, genom att skriva motioner, ändra stadgar och välja in styrelseledamöten. }\\\multicolumn{2}{c}{} \\
+    
+    &  Ordförande,  LinTeks valnämnd, Linköpings Universitet\\
+    \textsc{Nov 2014} & \emph{Ledarskap}\\
+    &\footnotesize{Som ordförande för LinTeks valnämnd genomförde jag ett val med bättre valdeltagande än EU valet 2009 och andra kårer i Sverige tog kontakt med oss för att lära av hur vi genomfört vårat val. }\\\multicolumn{2}{c}{} \\
+    
+    &  Tryckansvarig, Y-sektionens sexmästeri, Linköpings Universitet\\
+    \textsc{April 2012} & \emph{Ledarskap, kreativitet, marknadsföring}\\
+    &\footnotesize{Som tryckansvarig fick jag sätta mig in i allt gällande tryck vilket gav mig goda kunsakper i hur man skapar grafiska profiler och marknasför ett varumärke. Jag var även ansvarig för en tävling med över 30 lag och 300 tittare där jag arrangerade allt från sprittillstånd till ljud och ljus.  }\\
+\end{tabular}
+
+%Section: Andra erfarenheter
+\section{Projekt}
+\begin{tabular}{r|p{11cm}}
+
+    & Virtualiserings server\\
+    \textsc{Hösten 2015} & \emph{Virtualisering, \textsc{Linux}, Servrar}\\
+    &\footnotesize{För att slippa skaffa en konsol till min tv valde jag att bygga en ubuntu virtualiserings server där jag med hardware passtrough kunde dedikera ett grafikkort till en virtuell maskin för att kunna streama spel till tvn! Sen använde jag den till vanliga server grejer också. }\\\multicolumn{2}{c}{} \\
+    
+     & Beating Poker - simpelt poker spel\\
+    \textsc{Sommar 2013} & \emph{C++}\\
+    &\footnotesize{Byggde en simpel pokerplatform för att kunna utveckla och spela mot poker Ais, kom dock aldrig längre än ett textbaserat pokerspel med Ai stöd.}
+    
+\end{tabular}
+
+%Section: Languages
+\section{Språk}
+\begin{tabular}{rl}
+\textsc{Italienska:}&Grundlägande\\
+\textsc{Engelska:}&Flytande\\
+\textsc{Tyska:}&Grundlägande\\
+\end{tabular}
+
+\section{Programmerings språk}
+\begin{tabular}{rl}
+ Grundläggande kunskap:& Git, Pyton, \textsc{html},  \textsc{Linux}, \textsc{Java}, {\fb \LaTeX}\setmainfont[SmallCapsFont=Fontin-SmallCaps.otf]{Fontin.otf}\\
+God kunskap:& \textsc{Matlab}, \textsc{C++}, \textsc{C}, Adobe creative suite  \\
+\end{tabular}
+
+\section{Intressen}
+\begin{tabular}{rl}
+    Profesionellt:& Signalbehandling, bildbehandling, Ai, Open-Source, Ledarskap  \\
+    Privat:& E-sport, Dota, Styrketräning, Matlagning\\
+\end{tabular}
+
+\newpage
+\par{\centering\Large \hypertarget{grds}{Master of Science in \textsc{Finance}}\par}\large{\centering Grades\par}\normalsize
+\begin{center}
+\begin{tabular}{lcc}
+\multicolumn{1}{c}{\textsc{Exam}}&\textsc{Grade}&\textsc{Credit Hrs}\\ \hline
+Corporate Finance (Valuation)	&25&	6\\
+Financial Statement Analysis	&28&	6\\
+Statistics	&27&	6\\
+Theory of Finance	&26&	6\\
+Quantitative Methods for Finance	&30&	6\\
+Econometrics	&24	&6\\
+Derivatives	&31&	6\\
+Management of Financial and Insurance Companies	&30&	6\\
+Business Law	&31&	6\\
+Investment Banking	&28&	6\\ \\
+		
+Behavioral Models for Economics and Finance	&29&	6\\
+Numerical Methods for Finance	&29&	6\\
+Advanced Derivatives	&30&	6\\
+Fixed Income (Advanced Methods)	&30&	6\\ \\
+		
+English Language	&30&	4\\
+French Language	&31&	4\\
+		
+Internship	&	&8\\
+		
+Final Thesis	&	&20\\
+		
+		& Total&120\\\cline{2-3}
+&\textsc{Gpa}&\textbf{28.61}
+\end{tabular}
+\end{center}
+\bigskip
+\hrule
+\bigskip
+\par{\centering\Large \hypertarget{grds_cleli}{Undergraduate Degree in \textsc{Law and Business Administration}}\par}\large{\centering Grades\par}\normalsize
+
+\begin{center}
+
+\tablefirsthead{%
+  \multicolumn{1}{c}{\textsc{Esame (\textsc{ita})}}&\multicolumn{1}{c}{\textsc{Exam (\textsc{eng})}}&\textsc{Grade}&\textsc{Credit Hrs}\\ \hline}
+\tablehead{%
+\multicolumn{1}{c}{\textsc{Esame (\textsc{ita})}}&\multicolumn{1}{c}{\textsc{Exam (\textsc{eng})}}&\textsc{Grade}&\textsc{Credit Hrs}\\ \hline
+}
+\tabletail{%
+}
+\tablelasttail{}	
+
+ \begin{supertabular}{p{4.9cm} p{4.9cm} c c}
+Economia aziendale&Theory and principles of management& 28 & 8\\
+Istituzioni di diritto privato&Principles of private law&30&8\\
+ Istituzioni di diritto pubblico 
+&
+ Principles of public law 
+& 30&
+ 6 
+\\
+Matematica generale 
+& Mathematics 
+&31&8\\
+ Contabilit\`a e Bilancio 
+& Accounting and Financial statements 
+& 31 & 8\\
+ Diritto del lavoro 
+&
+ Labour law 
+& 30&
+4 
+\\
+ Informatica & Computer skills &29& 4 
+\\
+ Economia e gestione delle imprese & Corporate management &31&6 
+\\
+ Microeconomia & Microeconomics &30&8 
+\\
+ Contabilit\`a e bilancio 2 & Accounting and financial statements 2 
+&29&8 \\
+ Diritto commerciale & Company and business law &30&8 
+\\
+ Macroeconomia & Macroeconomics &29&8 
+\\
+ Statistica & Statistics &30&6\\
+ Diritto delle procedure concorsuali & Insolvency law &31&4 
+\\
+ Finanza aziendale 
+& Corporate finance 
+&31 &8 \\
+ Matematica finanziaria & Financial mathematics &31&4 
+\\
+ Programmazione e controllo 
+& Management accounting &31&8 
+\\
+Lingua Inglese \textsc{c1}& English Language \textsc{c1}& 25&6\\ 
+Diritto tributario & Tax law &30&6 
+\\
+Organizzazione e sistemi informativi aziendali &Management information systems &28&6 
+\\
+ Strategia e politica aziendale* 
+& Business strategy* & 29& 6 
+\\
+Derivati*&Derivatives*&30&6\\
+Opzionale all'estero* & Corporate Financial Strategy* &30&6\\
+Lingua Francese \textsc{b1} & French Language \textsc{b1}&31&6\\
+Economia dei mercati e degli intermediari finanziari* 
+&Financial markets and institutions* &30&6 
+\\
+Revisione aziendale 
+&Financial auditing &31&6 
+\\
+Scienza delle finanze &Public economics &30&6 
+\\
+ Lavoro finale& Final report&&6\\
+& & Total&180\\\cline{3-4}
+& &\textsc{Gpa}&\textbf{29.85}\\ \\ \multicolumn{4}{l}{\footnotesize A star (*) indicates that the course was taken at the \textbf{University of Southern California}, Los Angeles, \textsc{usa}}
+ \end{supertabular}
+\end{center}
+\bigskip
+\hrule
+\bigskip
+\par{\centering\Large \hypertarget{grds_usc}{Exchange Program at \textsc{usc}, Los Angeles}\par}\large{\centering Grades\par}\normalsize
+
+\begin{center}
+\begin{tabular}{lcc}
+\multicolumn{1}{c}{\textsc{Exam}}&\textsc{Grade}&\textsc{Grade Points}\\ \hline
+Corporate Financial Strategy	&A&	4\\
+Derivatives	&A&	4\\
+Money, Credit, and Banking	&A&	4\\
+Business Strategy & A-& 3.5\\
+& &\\\cline{2-3}
+ &\textsc{Gpa}&\textbf{3.875}
+\end{tabular}
+\end{center}
+%\newpage
+%\hypertarget{gmat}{\textsc{Gmat}\setmainfont{LMRoman10 Regular}\textregistered\setmainfont[SmallCapsFont=Fontin-SmallCaps]{Fontin-Regular}}
+
+%\XeTeXpdffile ''GMAT.pdf'' page 1 scaled 800
 
 \end{document}
